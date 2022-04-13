@@ -15,10 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', function () {
     return view('home', [
-        "name" => "wikan",
-        "email" => "muhamad.kahfi46@gmail.com"
+        "tittle" => "Home"
     ]);
 });
-Route::get('/berdonor', function () {
-    return view('berdonor');
+Route::get('/donor', function () {
+    return view('donor', [
+        "tittle" => "Donor Darah"
+    ]);
+});
+Route::get('/tentangkami', function () {
+    return view('tentangkami', [
+        "tittle" => "Tentang Kami"
+    ]);
+});
+Route::get('/faq', function () {
+    return view('faq', [
+        "tittle" => "FAQ"
+    ]);
 });

@@ -1,3 +1,4 @@
-body {
-  background-color: blue;
+.navbar .active {
+  font-weight: bold;
+  color: white;
 }
