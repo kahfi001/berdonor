@@ -11,7 +11,7 @@
     <title>Berdonor | {{ $tittle }}</title>
   </head>
   <body>
-    
+
     @include('partials.navbar')
 
     {{-- main --}}

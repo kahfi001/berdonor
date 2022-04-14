@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArtikelController;
+use App\Models\Artikel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "tittle" => "Home"
-    ]);
-});
+Route::get('/', [ArtikelController::class, 'index']);
+
+
 Route::get('/donor', function () {
     return view('donor', [
         "tittle" => "Donor Darah"
@@ -33,3 +33,20 @@ Route::get('/faq', function () {
         "tittle" => "FAQ"
     ]);
 });
+
+$blog_posts = [
+    [
+        "tittle" => "Judul Artikel Pertama",
+        "author" => "M. Kahfi",
+        "slug" => "judul-artikel-pertama",
+        "body" => " Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo animi quia vero? Cum natus eligendi quaerat, placeat veniam debitis nesciunt rerum culpa consectetur asperiores repellat nostrum. Cum eveniet rem quia placeat in totam dignissimos, modi voluptates fugit labore molestiae? Reiciendis, velit aliquam nisi pariatur molestias eaque ipsa odit non dolores nemo repellat vitae officiis magnam ex perferendis recusandae vero voluptas iure assumenda? Iure error quasi numquam exercitationem ex quibusdam odit molestiae accusamus explicabo. Ducimus sint ad ratione quam possimus! Dolorum ipsam numquam at eum consequatur nulla excepturi possimus ab nemo qui nihil nostrum error perspiciatis voluptatem, similique modi! Provident, asperiores?"
+    ],
+    [
+        "tittle" => "Judul Artikel Kedua",
+        "slug" => "judul-artikel-kedua",
+        "author" => "Wikan",
+        "body" => " Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo animi quia vero? Cum natus eligendi quaerat, placeat veniam debitis nesciunt rerum culpa consectetur asperiores repellat nostrum. Cum eveniet rem quia placeat in totam dignissimos, modi voluptates fugit labore molestiae? Reiciendis, velit aliquam nisi pariatur molestias eaque"
+    ],
+];
+
+Route::get('/artikel/{slug}', [ArtikelController::class, 'show']);
