@@ -56,10 +56,10 @@
             <div class="col p-4 d-flex flex-column position-static">
                 <article>
                   <h3 class="mb-0">
-                    <a href="/artikel/{{ $artikel["slug"] }}">{{ $artikel["tittle"] }}</a>
+                    <a href="/artikel/{{ $artikel->slug }}">{{ $artikel->tittle }}</a>
                   </h3>
-                  <div class="mb-1 text-muted">{{ $artikel["author"] }}</div>
-                  <p class="card-text mb-auto">{{ $artikel["body"] }}</p>
+                  <div class="mb-1 text-muted">{{ $artikel->author}}</div>
+                  <p class="card-text mb-auto">{{ $artikel->excerpt }}</p>
                 </article>
               </div>
               <div class="col-auto d-none d-lg-block">

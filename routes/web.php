@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ArtikelController::class, 'index']);
-
+Route::get('/artikel/{artikel:slug}', [ArtikelController::class, 'show']);
 
 Route::get('/donor', function () {
     return view('donor', [
@@ -48,5 +48,3 @@ $blog_posts = [
         "body" => " Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo animi quia vero? Cum natus eligendi quaerat, placeat veniam debitis nesciunt rerum culpa consectetur asperiores repellat nostrum. Cum eveniet rem quia placeat in totam dignissimos, modi voluptates fugit labore molestiae? Reiciendis, velit aliquam nisi pariatur molestias eaque"
     ],
 ];
-
-Route::get('/artikel/{slug}', [ArtikelController::class, 'show']);
