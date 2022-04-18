@@ -33,6 +33,11 @@ Route::get('/faq', function () {
         "tittle" => "FAQ"
     ]);
 });
+Route::get('/sign-in', function () {
+    return view('sign-in', [
+        "tittle" => "Sign-in"
+    ]);
+});
 
 $blog_posts = [
     [

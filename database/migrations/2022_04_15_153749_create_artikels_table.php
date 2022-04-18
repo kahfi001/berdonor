@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('artikels', function (Blueprint $table) {
             $table->id();
+            $table->foreignid('user_id');
             $table->string('tittle');
             $table->string('slug')->unique();
             $table->text('excerpt');
