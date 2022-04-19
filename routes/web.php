@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArtikelController;
 use App\Models\Artikel;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ArtikelController::class, 'index']);
+Route::get('/artikel', [ArtikelController::class, 'index']);
 Route::get('/artikel/{artikel:slug}', [ArtikelController::class, 'show']);
 
+Route::get('/', function () {
+    return view('home', [
+        "tittle" => "Home"
+    ]);
+});
 Route::get('/donor', function () {
     return view('donor', [
         "tittle" => "Donor Darah"
     ]);
 });
+// Route::get('/artikel', function () {
+//     return view('artikel', [
+//         "tittle" => "Artikel"
+//     ]);
+// });
+
 Route::get('/tentangkami', function () {
     return view('tentangkami', [
         "tittle" => "Tentang Kami"
@@ -38,6 +50,14 @@ Route::get('/sign-in', function () {
         "tittle" => "Sign-in"
     ]);
 });
+Route::get('/authors/{author:username}', function (User $author) {
+    return view('artikel', [
+        "tittle" => "User Artikel",
+        'artikel' => $author->artikel
+    ]);
+});
+
+
 
 $blog_posts = [
     [

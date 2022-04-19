@@ -44,31 +44,13 @@
     </div><!-- /.col-lg-3 -->
     
   </div>
-  <div>
+  {{-- <div>
     <div class="text-center my-5">
       <h2>Artikel</h2>
       <h3>Kepoin Artikel Kami Yuk!</h3>
     </div>
     <div class="row mb-2">
-      @foreach($artikel as $artikel)
-        <div class="col-md-6">
-          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col p-4 d-flex flex-column position-static">
-                <article>
-                  <h3 class="mb-0">
-                    <a href="/artikel/{{ $artikel->slug }}">{{ $artikel->tittle }}</a>
-                  </h3>
-                  <div class="mb-1 text-muted">{{ $artikel->author}}</div>
-                  <p class="card-text mb-auto">{{ $artikel->excerpt }}</p>
-                </article>
-              </div>
-              <div class="col-auto d-none d-lg-block">
-                <img src="img/artikel1.png" alt="artikel" width="250" height="250">
-              </div>
-            </div>
-          </div>
-        @endforeach
-      {{-- <div class="col-md-6">
+      <div class="col-md-6">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
             <h3 class="mb-0">Featured post</h3>
@@ -79,9 +61,21 @@
             <img src="img/artikel2.png" alt="artikel" width="250" height="250">
           </div>
         </div>
-      </div> --}}
+      </div>
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0">Featured post</h3>
+            <div class="mb-1 text-muted">Nov 12</div>
+            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          </div>        
+          <div class="col-auto d-none d-lg-block">
+            <img src="img/artikel2.png" alt="artikel" width="250" height="250">
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </div> --}}
   <div class="p-5 mb-4 bg-light rounded-3">
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">Kontak PMI</h1>

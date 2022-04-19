@@ -19,8 +19,8 @@ class ArtikelFactory extends Factory
         return [
             'tittle' => $this->faker->sentence(mt_rand(2, 4)),
             'slug' => $this->faker->slug(),
-            'excerpt' => $this->faker->sentence(mt_rand(10, 20)),
-            'body' => $this->faker->paragraph(mt_rand(5, 20)),
+            'excerpt' => $this->faker->sentence(mt_rand(20, 50)),
+            'body' => $this->faker->paragraph(mt_rand(50, 100)),
             'user_id' => mt_rand(1, 3)
         ];
     }

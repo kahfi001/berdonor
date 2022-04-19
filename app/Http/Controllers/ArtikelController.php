@@ -9,14 +9,14 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        return view('home', [
-            "tittle" => "Home",
-            "artikel" => Artikel::all()
+        return view('artikel', [
+            "tittle" => "Artikel",
+            "artikel" => Artikel::latest()->get()
         ]);
     }
     public function show(Artikel $artikel)
     {
-        return view('artikel', [
+        return view('post', [
             "tittle" => "Single Post",
             "artikel" => $artikel
         ]);

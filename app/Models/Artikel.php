@@ -11,4 +11,9 @@ class Artikel extends Model
 
     // protected $fillable = ['tittle', 'excerpt', 'body'];
     protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->belongsTo(user::class);
+    }
 }
