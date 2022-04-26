@@ -20,7 +20,9 @@ class ArtikelFactory extends Factory
             'tittle' => $this->faker->sentence(mt_rand(2, 4)),
             'slug' => $this->faker->slug(),
             'excerpt' => $this->faker->sentence(mt_rand(20, 50)),
-            'body' => $this->faker->paragraph(mt_rand(50, 100)),
+            'body' => collect($this->faker->paragraphs(mt_rand(5, 10)))
+                ->map(fn ($p) => "<p>$p</p>")
+                ->implode(''),
             'user_id' => mt_rand(1, 3)
         ];
     }

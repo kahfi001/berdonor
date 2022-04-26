@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\ArtikelController;
-use App\Models\Artikel;
 use App\Models\User;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,15 +47,15 @@ Route::get('/faq', function () {
         "tittle" => "FAQ"
     ]);
 });
-Route::get('/sign-in', function () {
-    return view('sign-in', [
-        "tittle" => "Sign-in"
-    ]);
-});
+Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
+
 Route::get('/authors/{author:username}', function (User $author) {
     return view('artikel', [
         "tittle" => "User Artikel",
-        'artikel' => $author->artikel
+        'artikel' => $author->artikel->load('author')
     ]);
 });
 

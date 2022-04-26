@@ -1,6 +1,14 @@
 @extends('layouts.main')
 
 @section('container')
+
+@if ($artikel->count())
+
+@else
+<p class="text-center  fs-4">Tidak ada Postingan</p>
+    
+@endif
+
 {{-- <h1>Ini Halaman Artikel</h1> --}}
 @foreach($artikel as $artikel)
 <div class="container">
@@ -10,12 +18,12 @@
         <h3 class="mb-2">
             <a href="/artikel/{{ $artikel->slug }}" class="text-decoration-none ">{{ $artikel->tittle }}</a>
           </h3>
-          <div class="mb-1">By : <a href="/authors/{{ $artikel->user->username }}" class="text-decoration-none ">{{ $artikel->user->name }}</a></div>
+          <div class="mb-1">By : <a href="/authors/{{ $artikel->author->username }}" class="text-decoration-none ">{{ $artikel->author->name }}</a> {{ $artikel->created_at->diffForHumans() }}</div>
           <p class="card-text mb-auto">{{ $artikel->excerpt }}</p>
         </article>
       </div>
       <div class="col-auto d-none d-lg-block">
-        <img src="../img/artikel1.png" alt="artikel" width="250" height="250">
+        <img src="https://source.unsplash.com/1200x400?{{ $artikel->author->name }}" alt="artikel" width="250" height="250">
       </div>
     </div>
   </div>

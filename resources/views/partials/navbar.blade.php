@@ -20,13 +20,11 @@
           <a class="nav-link {{ ($tittle == "FAQ") ? 'active' : ' ' }}" style=" color :#dc2626" href="/faq">FAQ</a>
         </li>
       </ul>
-      {{-- <form class="d-flex">
-      </form> --}}
-      <div class="colmd-3 text-end">
-        <li class=" d-flex ">
-          <a href="/sign-in"><button class="btn btn-outline-danger" type="submit">Masuk</button></a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="/login"><button class="btn btn-outline-danger" type="submit">Masuk</button></a>
         </li>
-      </div>
+      </ul>
     </div>
   </div>
 </nav>

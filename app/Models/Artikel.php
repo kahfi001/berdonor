@@ -11,9 +11,10 @@ class Artikel extends Model
 
     // protected $fillable = ['tittle', 'excerpt', 'body'];
     protected $guarded = ['id'];
+    protected $with = ['author'];
 
-    public function user()
+    public function author()
     {
-        return $this->belongsTo(user::class);
+        return $this->belongsTo(user::class, 'user_id');
     }
 }

@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'kahfi@gmail.com',
         //     'password' => bcrypt('12345')
         // ]);
-        Artikel::factory(5)->create();
+        Artikel::factory(20)->create();
         // Artikel::create([
         //     'tittle' => 'Judul Pertama',
         //     'slug' => 'judul-pertama',
