@@ -28,4 +28,8 @@ class Artikel
         $artikels = static::all();
         return $artikels->firstWhere('slug', $slug);
     }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

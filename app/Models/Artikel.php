@@ -17,4 +17,9 @@ class Artikel extends Model
     {
         return $this->belongsTo(user::class, 'user_id');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

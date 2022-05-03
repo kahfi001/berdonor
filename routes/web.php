@@ -5,8 +5,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardArtikelController;
 use App\Http\Controllers\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,9 @@ Route::get('/', function () {
 });
 Route::get('/donor', function () {
     return view('donor', [
-        "tittle" => "Donor Darah"
+        "tittle" => "Donor Darah",
+        "active" => "donor"
+
     ]);
 });
 // Route::get('/artikel', function () {
@@ -40,12 +43,14 @@ Route::get('/donor', function () {
 
 Route::get('/tentangkami', function () {
     return view('tentangkami', [
-        "tittle" => "Tentang Kami"
+        "tittle" => "Tentang Kami",
+        "active" => "Tentang kami"
     ]);
 });
 Route::get('/faq', function () {
     return view('faq', [
-        "tittle" => "FAQ"
+        "tittle" => "FAQ",
+        "active" => "FAQ"
     ]);
 });
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -59,25 +64,13 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/authors/{author:username}', function (User $author) {
     return view('artikel', [
         "tittle" => "User Artikel",
+        "active" => "artikel",
         'artikel' => $author->artikel->load('author')
     ]);
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->middleware('auth');
 
-
-
-$blog_posts = [
-    [
-        "tittle" => "Judul Artikel Pertama",
-        "author" => "M. Kahfi",
-        "slug" => "judul-artikel-pertama",
-        "body" => " Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo animi quia vero? Cum natus eligendi quaerat, placeat veniam debitis nesciunt rerum culpa consectetur asperiores repellat nostrum. Cum eveniet rem quia placeat in totam dignissimos, modi voluptates fugit labore molestiae? Reiciendis, velit aliquam nisi pariatur molestias eaque ipsa odit non dolores nemo repellat vitae officiis magnam ex perferendis recusandae vero voluptas iure assumenda? Iure error quasi numquam exercitationem ex quibusdam odit molestiae accusamus explicabo. Ducimus sint ad ratione quam possimus! Dolorum ipsam numquam at eum consequatur nulla excepturi possimus ab nemo qui nihil nostrum error perspiciatis voluptatem, similique modi! Provident, asperiores?"
-    ],
-    [
-        "tittle" => "Judul Artikel Kedua",
-        "slug" => "judul-artikel-kedua",
-        "author" => "Wikan",
-        "body" => " Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo animi quia vero? Cum natus eligendi quaerat, placeat veniam debitis nesciunt rerum culpa consectetur asperiores repellat nostrum. Cum eveniet rem quia placeat in totam dignissimos, modi voluptates fugit labore molestiae? Reiciendis, velit aliquam nisi pariatur molestias eaque"
-    ],
-];
+Route::resource('/dashboard/artikel', DashboardArtikelController::class)->middleware('auth');
