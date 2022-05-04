@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artikel;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardArtikelController extends Controller
 {
@@ -26,7 +27,7 @@ class DashboardArtikelController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.artikel.create');
     }
 
     /**
@@ -37,7 +38,7 @@ class DashboardArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -85,5 +86,11 @@ class DashboardArtikelController extends Controller
     public function destroy(Artikel $artikel)
     {
         //
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Artikel::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
     }
 }

@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('container')
-      <div class="container col-xxl-8">
+      <div class="container">
         <div class="row flex-lg-row-reverse align-items-center g-2 mt-3 ">
-          <div class="col-lg-6">
+          <div class="col-xl-6">
             <img src="../img/donordarah.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"  loading="lazy">
           </div>
-          <div class="col-lg-6">
+          <div class="col-xl-6">
             <div class="accordion my-3" id="accordionExample">
                 <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
