@@ -8,8 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Artikel extends Model
 {
-    use HasFactory;
-    use Sluggable;
+    use HasFactory, Sluggable;
 
     // protected $fillable = ['tittle', 'excerpt', 'body'];
     protected $guarded = ['id'];
@@ -29,7 +28,7 @@ class Artikel extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'tittle'
             ]
         ];
     }

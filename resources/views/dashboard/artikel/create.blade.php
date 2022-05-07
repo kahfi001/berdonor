@@ -6,39 +6,44 @@
 </div>
 
 <div class="col-lg-8">
-  <form action="post" method="/dashboard/artikel">
+  <form action="/dashboard/artikel" method="post">
     @csrf
     <div class="mb-3">
-      <label for="title" class="form-label">Title</label>
-      <input type="text" class="form-control" id="title" name="title">
+      <label for="tittle" class="form-label">Tittle</label>
+      <input type="text" class="form-control @error('tittle') is-invalid @enderror" id="tittle" name="tittle" required>
+      @error('tittle')
+          <div class="invalid-feedback">
+          {{ $message }}
+          </div>  
+      @enderror
     </div>
     <div class="mb-3">
       <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control" id="slug" name="slug">
+      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"  required>
+      @error('slug')
+      <div class="invalid-feedback">
+      {{ $message }}
+      </div>  
+  @enderror
     </div>
     <div class="mb-3">
       <label for="body" class="form-label">Body</label>
-      <input id="body" type="hidden" name="body">
+      <input id="body" type="hidden" name="body" required>
       <trix-editor input="body"></trix-editor>
     </div>
-
-
-
     <button type="submit" class="btn btn-primary">Buat Artikel</button>
   </form>
-
 </div>
-    
+  
 <script>
-  const title = document.querySelector('#title');
-  const slug = document.querySelector('#slug')
+  const tittle = document.querySelector('#tittle');
+  const slug = document.querySelector('#slug');
 
-  title.addEventListener('change', function(){
-    fetch('/dashboard/artikel/checkSlug?title='+title.value){
+  tittle.addEventListener('change', function(){
+    fetch('/dashboard/artikel/checkSlug?tittle='+tittle.value)
       .then(response=>response.json())
-      .then(data=>slug.value=data.slug)
-    }
-  });
+      .then(data=> slug.value = data.slug)
+  }); 
 
   document.addEventListener('trix-file-accept',function(e){
     e.preventDefault();

@@ -1,6 +1,5 @@
-
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-  <div class="position-sticky">
+  <div class=" d-flex flex-column position-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
         <a class="nav-link {{ Request::is('dashboard')?'active':'' }}" aria-current="page" href="/dashboard">
@@ -14,10 +13,11 @@
           Artikel
         </a>
       </li>
-      <li class="nav-item ">
+      <hr>
+      <li class="nav-item mx-auto">
         <form action="/logout" method="post">
           @csrf
-          <button type= "submit" class="btn btn-outline-danger nav-link mx-auto">Logout</button>
+          <button type= "submit" class="btn btn-outline-danger nav-link ">Logout</button>
         </form>
       </li>
     </ul>

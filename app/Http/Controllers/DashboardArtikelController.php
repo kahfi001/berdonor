@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artikel;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Str;
 
 class DashboardArtikelController extends Controller
 {
@@ -38,7 +39,18 @@ class DashboardArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $validateData = $request->validate([
+            'tittle' => 'required',
+            'slug' => 'required|unique:artikels',
+            'body' => 'required'
+        ]);
+
+        $validateData['user_id'] = auth()->user()->id;
+        $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+
+        Artikel::create($validateData);
+
+        return redirect('/dashboard/artikel')->with('success', 'Artikel berhasil ditambahkan');
     }
 
     /**
@@ -90,7 +102,7 @@ class DashboardArtikelController extends Controller
 
     public function checkSlug(Request $request)
     {
-        $slug = SlugService::createSlug(Artikel::class, 'slug', $request->title);
+        $slug = SlugService::createSlug(Artikel::class, 'slug', $request->tittle);
         return response()->json(['slug' => $slug]);
     }
 }
