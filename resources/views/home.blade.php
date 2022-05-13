@@ -44,7 +44,7 @@
     </div><!-- /.col-lg-3 -->
     
   </div>
-  {{-- <div>
+  <div>
     <div class="text-center my-5">
       <h2>Artikel</h2>
       <h3>Kepoin Artikel Kami Yuk!</h3>
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-  </div> --}}
+  </div>
   <div class="p-5 mb-4 bg-light rounded-3">
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">Kontak PMI</h1>

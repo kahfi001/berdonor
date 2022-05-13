@@ -9,7 +9,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link {{ Request::is('dashboard/artikel*')?'active':'' }}" href="/dashboard/artikel">
-          <span data-feather="file"></span>
+          <span data-feather="file-text"></span>
           Artikel
         </a>
       </li>
@@ -17,7 +17,7 @@
       <li class="nav-item mx-auto">
         <form action="/logout" method="post">
           @csrf
-          <button type= "submit" class="btn btn-outline-danger nav-link ">Logout</button>
+          <button type= "submit" class="btn btn-outline-danger nav-link "><span data-feather="log-out"></span>Logout</button>
         </form>
       </li>
     </ul>

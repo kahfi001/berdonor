@@ -2,15 +2,16 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Create Artikel</h1>
+  <h1 class="h2">Edit Artikel</h1>
 </div>
 
 <div class="col-lg-8">
-  <form action="/dashboard/artikel" method="post" enctype="multipart/form-data">
+  <form action="/dashboard/artikel/{{ $artikel->slug }}" method="post">
+    @method('put')
     @csrf
     <div class="mb-3">
       <label for="tittle" class="form-label">Tittle</label>
-      <input type="text" class="form-control @error('tittle') is-invalid @enderror" id="tittle" name="tittle" required>
+      <input type="text" class="form-control @error('tittle') is-invalid @enderror" id="tittle" name="tittle" required value="{{ old('tittle',$artikel->tittle) }}">
       @error('tittle')
           <div class="invalid-feedback">
           {{ $message }}
@@ -19,17 +20,8 @@
     </div>
     <div class="mb-3">
       <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"  required>
+      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"  required value="{{ old('slug',$artikel->slug) }}">
       @error('slug')
-      <div class="invalid-feedback">
-      {{ $message }}
-      </div>  
-  @enderror
-    </div>
-    <div class="mb-3">
-      <label for="image" class="form-label  @error('image') is-invalid @enderror">Upload gambar</label>
-      <input class="form-control" type="file" id="image" name="image">
-      @error('image')
           <div class="invalid-feedback">
           {{ $message }}
           </div>  
@@ -37,10 +29,10 @@
     </div>
     <div class="mb-3">
       <label for="body" class="form-label">Body</label>
-      <input id="body" type="hidden" name="body" required>
+      <input id="body" type="hidden" name="body" required value="{{ old('body',$artikel->body) }}">
       <trix-editor input="body"></trix-editor>
     </div>
-    <button type="submit" class="btn btn-primary">Buat Artikel</button>
+    <button type="submit" class="btn btn-primary">Update Artikel</button>
   </form>
 </div>
   

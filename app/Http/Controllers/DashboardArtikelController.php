@@ -42,8 +42,13 @@ class DashboardArtikelController extends Controller
         $validateData = $request->validate([
             'tittle' => 'required',
             'slug' => 'required|unique:artikels',
+            'image' => 'image|file|max:1024',
             'body' => 'required'
         ]);
+
+        if ($request->file('image')) {
+            $validateData['image'] = $request->file('image')->store('post-images');
+        }
 
         $validateData['user_id'] = auth()->user()->id;
         $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
@@ -74,7 +79,9 @@ class DashboardArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        //
+        return view('dashboard.artikel.edit', [
+            'artikel' => $artikel
+        ]);
     }
 
     /**
@@ -86,7 +93,28 @@ class DashboardArtikelController extends Controller
      */
     public function update(Request $request, Artikel $artikel)
     {
-        //
+        $rules = [
+            'tittle' => 'required',
+            'body' => 'required'
+        ];
+
+        if ($request->slug != $artikel->slug) {
+            $rules['slug'] = 'required|unique:artikels';
+        }
+
+        $validateData = $request->validate($rules);
+
+        $validateData['user_id'] = auth()->user()->id;
+        $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+
+        Artikel::where('id', $artikel->id)
+            ->update($validateData);
+
+        // if ($artikel->author->id !== auth()->user()->id) {
+        //     abort(403);
+        // }
+
+        return redirect('/dashboard/artikel')->with('success', 'Artikel berhasil diupdate');
     }
 
     /**
@@ -97,7 +125,9 @@ class DashboardArtikelController extends Controller
      */
     public function destroy(Artikel $artikel)
     {
-        //
+        Artikel::destroy($artikel->id);
+
+        return redirect('/dashboard/artikel')->with('success', 'Artikel berhasil dihapus');
     }
 
     public function checkSlug(Request $request)

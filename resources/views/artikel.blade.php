@@ -23,7 +23,14 @@
         </article>
       </div>
       <div class="col-auto d-none d-lg-block">
-        <img src="https://source.unsplash.com/1200x400?{{ $artikel->author->name }}" alt="artikel" width="250" height="250">
+        @if ($artikel->image)
+        <div style="max-height:250px; overflow:hidden;">
+          <img src="{{ asset('storage/'. $artikel->image) }}" class="img-fluid mt-3" alt="">
+        </div>
+        @else
+        <img src="https://source.unsplash.com/1200x400?{{ $artikel->author->name }}" alt="artikel" width="250" height="250">      
+        @endif
+        
       </div>
     </div>
   </div>
