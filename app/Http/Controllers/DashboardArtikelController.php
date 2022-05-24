@@ -6,6 +6,7 @@ use App\Models\Artikel;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardArtikelController extends Controller
 {
@@ -95,14 +96,24 @@ class DashboardArtikelController extends Controller
     {
         $rules = [
             'tittle' => 'required',
+            'image' => 'image|file|max:1024',
             'body' => 'required'
         ];
+
+
 
         if ($request->slug != $artikel->slug) {
             $rules['slug'] = 'required|unique:artikels';
         }
 
         $validateData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validateData['image'] = $request->file('image')->store('post-images');
+        }
 
         $validateData['user_id'] = auth()->user()->id;
         $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
@@ -125,6 +136,9 @@ class DashboardArtikelController extends Controller
      */
     public function destroy(Artikel $artikel)
     {
+        if ($artikel->image) {
+            Storage::delete($$artikel->image);
+        }
         Artikel::destroy($artikel->id);
 
         return redirect('/dashboard/artikel')->with('success', 'Artikel berhasil dihapus');

@@ -53,6 +53,12 @@ Route::get('/faq', function () {
         "active" => "FAQ"
     ]);
 });
+Route::get('/transfusi', function () {
+    return view('transfusi', [
+        "tittle" => "Transfusi",
+        "active" => "Transfusi"
+    ]);
+});
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);

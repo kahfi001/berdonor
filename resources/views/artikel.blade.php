@@ -12,7 +12,7 @@
 {{-- <h1>Ini Halaman Artikel</h1> --}}
 @foreach($artikel as $artikel)
 <div class="container">
-  <div class="row g-0 m-2 border rounded overflow-hidden flex-md-row  shadow-sm h-md-250 position-relative">
+  <div class="row g-0 border rounded overflow-hidden flex-md-row  shadow-sm h-md-250 position-relative">
     <div class="col p-4 d-flex flex-column position-static">
       <article>
         <h3 class="mb-2">

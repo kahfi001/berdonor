@@ -1,3 +1,5 @@
+
+/* login */
 .form-signin .form-floating:focus-within {
   z-index: 2;
 }
@@ -14,6 +16,7 @@
   border-top-right-radius: 0;
 }
 
+/* navbar */
 .navbar .active{
   font-weight: bold; 
 }
@@ -42,4 +45,9 @@ nav.navbar ul li a:after {
 }
 nav.navbar ul li a:hover:after {
   width: 100%;
+}
+
+/* kontak PMI */
+.kontak-pmi{
+  background: url('../img/donordarah.jpg');
 }

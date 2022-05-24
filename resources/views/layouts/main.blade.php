@@ -12,7 +12,9 @@
   </head>
   <body>
 
-    @include('partials.navbar')
+    <div class="">
+      @include('partials.navbar')
+    </div>
 
     {{-- main --}}
     <main>

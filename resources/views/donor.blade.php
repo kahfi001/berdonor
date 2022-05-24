@@ -10,7 +10,7 @@
       <p class="lead">Berikut adalah Buku Panduan Website Berdonor. <br>
         Silahkan Download File nya dibawah.</p>
       <div class="d-grid gap-2 ">
-        <button class="btn btn-outline-danger" type="submit" width="max">Download</button>
+        <a href="https://drive.google.com/file/d/1sPPxpLRb-kJ97QQ4xeP_uRufhT0idZ5Y/preview" class="btn btn-outline-danger">Donwload</a>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@
           jika sebelumnya sudah pernah menjadi pendonor darah.</li>
       </ol>
       <div class="d-grid gap-2">
-        <button class="btn btn-outline-danger" type="submit">Donor Sekarang</button>
+        <a href="/transfusi" class="btn btn-outline-danger">Donor Sekarang</a>
       </div>
     </div>
   </div>
