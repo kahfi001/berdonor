@@ -32,7 +32,7 @@
         <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
       </form>
     </main>
-    <small class="d-block text-center">
+    <small class="d-block text-center mb-5">
       Belum Punya Akun? <a href="register">Daftar Sekarang</a> 
     </small>
   </div>

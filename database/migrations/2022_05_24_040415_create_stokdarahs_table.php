@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('stokdarahs', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('user_id');
+            $table->string('a');
+            $table->string('b');
+            $table->string('ab');
+            $table->string('o');
             $table->timestamps();
         });
     }

@@ -5,9 +5,13 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\DarahController;
 use App\Http\Controllers\DashboardArtikelController;
+use App\Http\Controllers\DonorController;
 use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\StokDarahController;
+use App\Http\Controllers\StokDarahHomeController;
+use App\Models\Stokdarah;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +27,9 @@ use App\Http\Controllers\RegisterController;
 Route::get('/artikel', [ArtikelController::class, 'index']);
 Route::get('/artikel/{artikel:slug}', [ArtikelController::class, 'show']);
 
+// Route::get('/', [StokDarahHomeController::class, 'index']);
+// Route::get('/', [StokDarahHomeController::class, 'show']);
+
 Route::get('/', function () {
     return view('home', [
         "tittle" => "Home"
@@ -32,7 +39,6 @@ Route::get('/donor', function () {
     return view('donor', [
         "tittle" => "Donor Darah",
         "active" => "donor"
-
     ]);
 });
 // Route::get('/artikel', function () {
@@ -53,12 +59,27 @@ Route::get('/faq', function () {
         "active" => "FAQ"
     ]);
 });
+// Route::get('/riwayat', function () {
+//     return view('riwayat', [
+//         "tittle" => "riwayat",
+//         "active" => "riwayat"
+//     ]);
+// });
+
 Route::get('/transfusi', function () {
     return view('transfusi', [
         "tittle" => "Transfusi",
         "active" => "Transfusi"
     ]);
 });
+
+Route::get('/riwayat', function () {
+    return view('riwayat', [
+        "tittle" => "riwayat",
+        "active" => "riwayat"
+    ]);
+});
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
@@ -81,3 +102,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/artikel/checkSlug', [DashboardArtikelController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/artikel', DashboardArtikelController::class)->middleware('auth');
+
+
+Route::resource('/dashboard/donor', StokDarahController::class)->middleware('auth');
+
+Route::post('/donor', [DonorController::class, 'store']);

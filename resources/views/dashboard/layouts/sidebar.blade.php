@@ -13,6 +13,12 @@
           Artikel
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/donor*')?'active':'' }}" href="/dashboard/donor">
+          <span data-feather="heart"></span>
+          Stok Darah
+        </a>
+      </li>
       <hr>
       <li class="nav-item mx-auto">
         <form action="/logout" method="post">

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Stokdarah;
+use App\Models\Donor;
 
-class StokDarahController extends Controller
+class DonorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class StokDarahController extends Controller
      */
     public function index()
     {
-        $stokdarah = Stokdarah::all();
-
-        return view('dashboard.donor.index', ['stokdarah' => $stokdarah]);
+        $donor = Donor::all(); 
+        
+        return view('donor', ['donor' => $donor]); 
     }
 
     /**
@@ -26,7 +26,7 @@ class StokDarahController extends Controller
      */
     public function create()
     {
-        //
+        return view('transfusi');
     }
 
     /**
@@ -37,7 +37,25 @@ class StokDarahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'tlp' => 'required',
+            'tempat' => 'required',
+            'tgl_lahir' => 'required',
+            'jk' => 'required',
+            'donor_terakhir' => 'required',
+            'skrdonor' => 'required',
+            'lokasi_donor' => 'required',
+            'tgl_donor' => 'required',
+            'jam' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        Donor::create($input);
+
+        return back()->with('success', ' Post baru berhasil dibuat.');
     }
 
     /**
@@ -59,11 +77,7 @@ class StokDarahController extends Controller
      */
     public function edit($id)
     {
-        $stokdarah = Stokdarah::findOrFail($id);
-
-        return view('dashboard.donor.edit', [
-            'stokdarah' => $stokdarah
-        ]);
+        //
     }
 
     /**
@@ -75,16 +89,7 @@ class StokDarahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'a' => 'required',
-            'b' => 'required',
-            'ab' => 'required',
-            'o' => 'required'
-        ]);
-
-        Stokdarah::find($id(1))->update($request->all());
-
-        return redirect('/dashboard/donor')->with('success', 'Artikel berhasil dihapus');
+        //
     }
 
     /**

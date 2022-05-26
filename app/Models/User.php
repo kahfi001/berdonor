@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Artikel::class);
     }
+
+    // public function stokdarah()
+    // {
+    //     return $this->hasMany(Stokdarah::class);
+    // }
 }

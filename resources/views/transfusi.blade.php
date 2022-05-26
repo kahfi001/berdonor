@@ -5,7 +5,7 @@
     <h1 class="h2">Isi Identitas</h1>
   </div>
   <div class="col-lg-8">
-    <form action="/dashboard/artikel" method="post" enctype="multipart/form-data" class="row g-3">
+    <form action="/donor" method="POST" enctype="multipart/form-data" class="row g-3">
       @csrf
         <div class="col-12">
           <label for="nama" class="form-label">Nama</label>
@@ -62,7 +62,7 @@
         </div>
         <div class="col-md-4">
           <label for="lastDonor" class="form-label">Tgl Donor Terakhir</label>
-          <input type="date " class="form-control @error('lastDonor') is-invalid @enderror" id="lastDonor" name="lastDonor" required>
+          <input type="date" class="form-control @error('lastDonor') is-invalid @enderror" id="lastDonor" name="lastDonor" required>
           @error('lastDonor')
               <div class="invalid-feedback">
               {{ $message }}
@@ -82,11 +82,14 @@
           <h1 class="h2">Pilih jadwal</h1>
         </div>
         <div class="col-12">
-          <label for="gender" class="form-label">Lokasi Donor</label>
-          <select class="form-select" aria-label="Default select example" id="gender">
+          <label for="tempat" class="form-label">Lokasi Donor</label>
+          <select class="form-select" aria-label="Default select example" id="tempat">
             <option selected>Pilih Tempat</option>
-            <option value="Laki-laki">Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
+            <option value="1">Jl. Embong Ploso No.7-15, Embong Kaliasin, Kec. Genteng, Kota SBY, Jawa Timur 60271</option>
+            <option value="2">Jl. Sumatera No.71, Gubeng, Kec. Gubeng, Kota SBY, Jawa Timur 60281</option>
+            <option value="3">Jl. Karang Menjangan No.22, Airlangga, Kec. Gubeng, Kota SBY, Jawa Timur 60286</option>
+            <option value="4">Jl. Tambaksari No.49, Tambaksari, Kec. Tambaksari, Kota SBY, Jawa Timur 60136</option>
+            <option value="5">Jl. Jenderal Basuki Rachmat No.8 - 12, Kedungdoro, Kec. Tegalsari, Kota SBY, Jawa Timur 60261</option>
           </select>
         </div>
           <div class="col-12">

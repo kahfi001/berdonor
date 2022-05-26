@@ -31,7 +31,7 @@
         <li>	Jarak waktu donor darah terakhir minimal 3 bulan atau 12 minggu,
           jika sebelumnya sudah pernah menjadi pendonor darah.</li>
       </ol>
-      <div class="d-grid gap-2">
+      <div class="d-grid gap-2 mb-5">
         <a href="/transfusi" class="btn btn-outline-danger">Donor Sekarang</a>
       </div>
     </div>
