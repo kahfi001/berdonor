@@ -10,6 +10,9 @@ class HomeController extends Controller
 {
     public function index()
     {
+
+
+
         $stokdarah = Stokdarah::all();
 
         return view('home', [

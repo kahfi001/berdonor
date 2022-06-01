@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardArtikelController;
+use App\Http\Controllers\DashboardDarahController;
 use App\Http\Controllers\DonorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\Riwayat;
-use App\Models\Stokdarah;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,28 +25,10 @@ use App\Models\Stokdarah;
 */
 
 Route::get('/artikel', [ArtikelController::class, 'index']);
+Route::get('/', [NavbarController::class, 'index']);
 Route::get('/artikel/{artikel:slug}', [ArtikelController::class, 'show']);
 
 Route::get('/', [HomeController::class, 'index']);
-// Route::get('/', [HomeController::class, 'show']);
-
-// Route::get('/', function (Stokdarah $stokdarah) {
-//     return view('home', [
-//         "tittle" => "Home",
-//         "stokdarah" => $stokdarah
-//     ]);
-// });
-// Route::get('/donor', function () {
-//     return view('donor', [
-//         "tittle" => "Donor Darah",
-//         "active" => "donor"
-//     ]);
-// });
-// Route::get('/artikel', function () {
-//     return view('artikel', [
-//         "tittle" => "Artikel"
-//     ]);
-// });
 
 Route::get('/tentangkami', function () {
     return view('tentangkami', [
@@ -60,21 +42,6 @@ Route::get('/faq', function () {
         "active" => "FAQ"
     ]);
 });
-// Route::get('/riwayat', function () {
-//     return view('riwayat', [
-//         "tittle" => "riwayat",
-//         "active" => "riwayat"
-//     ]);
-// });
-
-// Route::get('/transfusi', function () {
-//     return view('transfusi', [
-//         "tittle" => "Transfusi",
-//         "active" => "Transfusi"
-//     ]);
-// });
-
-Route::get('/riwayat/{donor:id}', [DonorController::class, 'show']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -99,14 +66,8 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/artikel/checkSlug', [DashboardArtikelController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/artikel', DashboardArtikelController::class)->middleware('auth');
 
-// Route::get('/riwayat', function (Donor $donor) {
-//     return view('riwayat', [
-//         "tittle" => "Riwayat",
-//         "active" => "Riwayat",
-//         'donor' => $donor
-//     ]);
-// });
-
-
-
 Route::resource('donor', DonorController::class)->middleware('auth');
+
+Route::get('/dashboard/darah', [DashboardDarahController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/darah/edit/{id}', [DashboardDarahController::class, 'edit'])->middleware('auth');
+Route::post('/dashboard/darah/update/{id}', [DashboardDarahController::class, 'update'])->middleware('auth');

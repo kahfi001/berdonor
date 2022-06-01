@@ -12,13 +12,13 @@
 {{-- <h1>Ini Halaman Artikel</h1> --}}
 @foreach($artikel as $artikel)
 <div class="container">
-  <div class="row g-0 border rounded overflow-hidden flex-md-row  shadow-sm h-md-250 position-relative">
+  <div class="row g-0 border rounded overflow-hidden flex-md-row  shadow-sm h-md-250 position-relative my-4">
     <div class="col p-4 d-flex flex-column position-static">
       <article>
         <h3 class="mb-2">
             <a href="/artikel/{{ $artikel->slug }}" class="text-decoration-none ">{{ $artikel->tittle }}</a>
           </h3>
-          <div class="mb-1">By : <a href="/authors/{{ $artikel->author->username }}" class="text-decoration-none ">{{ $artikel->author->name }}</a> {{ $artikel->created_at->diffForHumans() }}</div>
+          <div class="mb-1">dibuat {{ $artikel->created_at->diffForHumans() }}</div>
           <p class="card-text mb-auto">{{ $artikel->excerpt }}</p>
         </article>
       </div>
@@ -36,7 +36,7 @@
   </div>
   
   @endforeach
-  <a href="/">Kembali ke main</a>
+  <a href="/" class="btn btn-outline-danger m-3">Kembali ke main</a>
 </div>
 
 

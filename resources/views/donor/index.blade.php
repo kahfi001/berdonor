@@ -15,7 +15,7 @@
       </div>
     </div>
   </div>
-  <div class="row flex-lg-row align-items-center g-5  ">
+  <div class="row flex-lg-row align-items-center g-5 my-5">
     <div class="col-10 col-sm-8 col-lg-6">
       <a href="/donor/create"><img src="img/donor.png" class="d-block mx-lg-auto img-fluid hover01" alt="" width="350"  loading="lazy"></a>
      

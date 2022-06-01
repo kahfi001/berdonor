@@ -60,8 +60,9 @@
             Welcome {{ auth()->user()->name }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            @can('admin')
             <li><a class="dropdown-item" href="/dashboard">My Dashboard</a></li>
-            <li><hr class="dropdown-divider"></li>
+            @endcan 
             <li>
               <form action="/logout" method="post">
                 @csrf

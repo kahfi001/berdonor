@@ -9,7 +9,8 @@ class Stokdarah extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['a', 'b', 'ab', 'o'];
+    protected $guarded = [];
+    // protected $fillable = ['a', 'b', 'ab', 'o'];
     // protected $with = ['author'];
     // public function author()
     // {
