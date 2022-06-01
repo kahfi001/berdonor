@@ -15,17 +15,18 @@ return new class extends Migration
     {
         Schema::create('donors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('nama');
             $table->string('alamat');
-            $table->integer('tlp');
+            $table->string('tlp');
             $table->string('tempat');
-            $table->string('tgl_lahir');
-            $table->string('jk');
-            $table->string('donor_terakhir');
-            $table->integer('skrdonor');
+            $table->date('tgl_lahir');
+            $table->enum('jk', ['laki-laki', 'perempuan']);
+            $table->date('donor_terakhir');
+            $table->string('skrdonor');
             $table->string('lokasi_donor');
-            $table->string('tgl_donor');
-            $table->string('jam');
+            $table->date('tgl_donor');
+            $table->time('jam');
             $table->timestamps();
         });
     }

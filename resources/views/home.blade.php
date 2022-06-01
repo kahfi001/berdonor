@@ -17,32 +17,33 @@
     
     <div class="text-center my-5">
       <h2>Stok Darah</h2>
-      <p>Update terakhir : {{ date('l, d-m-Y ') }} </p>
+      <p>Update terakhir : {{ date(' d-m-Y ') }} </p>
       <p>Stok dapat berubah sewaktu-waktu. Untuk konfirmasi stok, silahkan menghubungi UDD</p>
     </div>
+
     <div class="row mt-5">
       <div class="col-lg-3">
         <img src="img/a.png" alt="a" class="rounded mx-auto d-block">
 
-        <h2 class="text-center py-3">200  </h2>
+        <h2 class="text-center py-3">{{ $stokdarah[0]->a }}</h2>
       </div><!-- /.col-lg-3 -->
       
       <div class="col-lg-3">
         <img src="img/b.png" alt="a" class="rounded mx-auto d-block">
 
-        <h2 class="text-center py-3">200</h2>
+        <h2 class="text-center py-3">{{ $stokdarah[0]->b }}</h2>
       </div><!-- /.col-lg-3 -->
       
       <div class="col-lg-3">
         <img src="img/ab.png" alt="a" class="rounded mx-auto d-block">
 
-        <h2 class="text-center py-3">200</h2>
+        <h2 class="text-center py-3">{{ $stokdarah[0]->ab }}</h2>
       </div><!-- /.col-lg-3 -->
       
       <div class="col-lg-3">
         <img src="img/o.png" alt="a" class="rounded mx-auto d-block">
 
-        <h2 class="text-center py-3">200</h2>
+        <h2 class="text-center py-3">{{ $stokdarah[0]->o }}</h2>
       </div><!-- /.col-lg-3 -->
     </div>
 

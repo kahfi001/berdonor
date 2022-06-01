@@ -1,10 +1,10 @@
-{{-- @extends('layouts.main')
+@extends('layouts.main')
 
 
 @section('container')
   <div class="row flex-lg-row-reverse align-items-center g-5">
     <div class="col-10 col-sm-8 col-lg-6">
-      <img src="img/ilustrationdonor.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      <img src="img/buku.png" class="d-block mx-lg-auto img-fluid mt-4" alt="Bootstrap Themes" width="400" height="300" loading="lazy">
     </div>
     <div class="col-lg-6">
       <h2 class="text-bold">Buku panduan donor darah</h2>
@@ -17,7 +17,8 @@
   </div>
   <div class="row flex-lg-row align-items-center g-5  ">
     <div class="col-10 col-sm-8 col-lg-6">
-      <img src="img/ilustrationdonor.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      <a href="/donor/create"><img src="img/donor.png" class="d-block mx-lg-auto img-fluid hover01" alt="" width="350"  loading="lazy"></a>
+     
     </div>
     <div class="col-lg-6">
       <h2 class="text-bold">Persyaratan Donor Darah</h2>
@@ -33,18 +34,25 @@
           jika sebelumnya sudah pernah menjadi pendonor darah.</li>
       </ol>
       <div class="d-grid gap-2 mb-5">
-        <a href="/create" class="btn btn-outline-danger">Donor Sekarang</a>
+        <a href="/donor/create" class="btn btn-outline-danger">Donor Sekarang</a>
       </div>
     </div>
   </div>
 
+  @if (session()->has('success'))
+  <div class="alert alert-success my-5" role="alert">
+    {{ session('success') }}
+  </div> 
+  @endif
+
 @if ($donor->count())
 
 @else
-<p class="text-center fs-4">Tidak ada data</p>
+<p class="text-center fs-4 m-4">Tidak ada data</p>
     
 @endif
-  <table class="table table-striped table-sm">
+@foreach ($donor as $donor)
+  <table class="table table-striped table-sm mt-4">
     <thead>
       <tr>
         <th scope="col">Identitas</th>
@@ -52,7 +60,6 @@
       </tr>
     </thead>
     <tbody> 
-      @foreach ($donor as $donor)
         <tr>
           <td>Nama</td>
           <td>{{ $donor->nama }}</td>
@@ -63,41 +70,42 @@
         </tr>
         <tr>
           <td>No Hp</td>
-          <td> Kahfi</td>
+          <td> {{ $donor->tlp }}</td>
         </tr>
         <tr>
           <td>Tempat</td>
-          <td> Kahfi</td>
+          <td> {{ $donor->tempat }}</td>
         </tr>
         <tr>
           <td>Tanggal Lahir</td>
-          <td> Kahfi</td>
+          <td> {{ $donor->tgl_lahir }}</td>
         </tr>
         <tr>
           <td>jenis Kelamin</td>
-          <td> Kahfi</td>
+          <td> {{ $donor->jk }}</td>
         </tr>
         <tr>
           <td>Donor terakhir</td>
-          <td> Kahfi</td>
+          <td> {{ $donor->donor_terakhir }}</td>
         </tr>
         <tr>
           <td>Donor Sekarang</td>
-          <td> Kahfi</td>
+          <td> {{ $donor->skrdonor }}</td>
         </tr>
         <tr>
           <td>Lokasi Donor</td>
-          <td> Kahfi</td>
+          <td> {{ $donor->lokasi_donor }}</td>
         </tr>
         <tr>
           <td>Tgl Donor</td>
-          <td> Kahfi</td>
+          <td> {{ $donor->tgl_donor }}</td>
         </tr>
         <tr>
           <td>jam</td>
-          <td> Kahfi</td>
+          <td> {{ $donor->jam }}</td>
         </tr>
     </tbody>
-    @endforeach
   </table>
-@endsection --}}
+    @endforeach
+  <br>
+@endsection

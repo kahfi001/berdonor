@@ -48,9 +48,9 @@
         <li class="nav-item">
           <a class="nav-link {{ ($tittle == "FAQ") ? 'active' : ' ' }}" href="/faq">FAQ</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link {{ ($tittle == "Riwayat") ? 'active' : ' ' }}" href="/riwayat">Riwayat</a>
-        </li>
+        </li> --}}
       </ul>
 
       <ul class="navbar-nav ms-auto">

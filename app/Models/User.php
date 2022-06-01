@@ -43,8 +43,8 @@ class User extends Authenticatable
         return $this->hasMany(Artikel::class);
     }
 
-    // public function stokdarah()
-    // {
-    //     return $this->hasMany(Stokdarah::class);
-    // }
+    public function donor()
+    {
+        return $this->hasMany(Donor::class);
+    }
 }

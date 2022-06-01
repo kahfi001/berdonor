@@ -1,16 +1,16 @@
 <?php
 
 use App\Models\User;
+use App\Models\Donor;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\DarahController;
 use App\Http\Controllers\DashboardArtikelController;
 use App\Http\Controllers\DonorController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\StokDarahController;
-use App\Http\Controllers\StokDarahHomeController;
+use App\Http\Controllers\Riwayat;
 use App\Models\Stokdarah;
 
 /*
@@ -27,20 +27,21 @@ use App\Models\Stokdarah;
 Route::get('/artikel', [ArtikelController::class, 'index']);
 Route::get('/artikel/{artikel:slug}', [ArtikelController::class, 'show']);
 
-// Route::get('/', [StokDarahHomeController::class, 'index']);
-// Route::get('/', [StokDarahHomeController::class, 'show']);
+Route::get('/', [HomeController::class, 'index']);
+// Route::get('/', [HomeController::class, 'show']);
 
-Route::get('/', function () {
-    return view('home', [
-        "tittle" => "Home"
-    ]);
-});
-Route::get('/donor', function () {
-    return view('donor', [
-        "tittle" => "Donor Darah",
-        "active" => "donor"
-    ]);
-});
+// Route::get('/', function (Stokdarah $stokdarah) {
+//     return view('home', [
+//         "tittle" => "Home",
+//         "stokdarah" => $stokdarah
+//     ]);
+// });
+// Route::get('/donor', function () {
+//     return view('donor', [
+//         "tittle" => "Donor Darah",
+//         "active" => "donor"
+//     ]);
+// });
 // Route::get('/artikel', function () {
 //     return view('artikel', [
 //         "tittle" => "Artikel"
@@ -66,19 +67,14 @@ Route::get('/faq', function () {
 //     ]);
 // });
 
-Route::get('/transfusi', function () {
-    return view('transfusi', [
-        "tittle" => "Transfusi",
-        "active" => "Transfusi"
-    ]);
-});
+// Route::get('/transfusi', function () {
+//     return view('transfusi', [
+//         "tittle" => "Transfusi",
+//         "active" => "Transfusi"
+//     ]);
+// });
 
-Route::get('/riwayat', function () {
-    return view('riwayat', [
-        "tittle" => "riwayat",
-        "active" => "riwayat"
-    ]);
-});
+Route::get('/riwayat/{donor:id}', [DonorController::class, 'show']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -103,7 +99,14 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/artikel/checkSlug', [DashboardArtikelController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/artikel', DashboardArtikelController::class)->middleware('auth');
 
+// Route::get('/riwayat', function (Donor $donor) {
+//     return view('riwayat', [
+//         "tittle" => "Riwayat",
+//         "active" => "Riwayat",
+//         'donor' => $donor
+//     ]);
+// });
 
-Route::resource('/dashboard/donor', StokDarahController::class)->middleware('auth');
 
-Route::post('/donor', [DonorController::class, 'store']);
+
+Route::resource('donor', DonorController::class)->middleware('auth');

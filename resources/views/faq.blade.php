@@ -4,10 +4,10 @@
       <div class="container">
         <div class="row flex-lg-row-reverse align-items-center g-2 mt-3 ">
           <div class="col-xl-6">
-            <img src="../img/donordarah.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"  loading="lazy">
+            <img src="../img/faq.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"  loading="lazy">
           </div>
           <div class="col-xl-6">
-            <div class="accordion my-3" id="accordionExample">
+            <div class="accordion-bg-dark my-3" id="accordionExample">
                 <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

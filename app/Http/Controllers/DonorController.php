@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Donor;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DonorController extends Controller
 {
@@ -14,9 +17,11 @@ class DonorController extends Controller
      */
     public function index()
     {
-        $donor = Donor::all(); 
-        
-        return view('donor', ['donor' => $donor]); 
+        return view('donor.index', [
+            "tittle" => "Donor Darah",
+            "active" => "donor",
+            "donor" => Donor::where('user_id', auth()->user()->id)->get()
+        ]);
     }
 
     /**
@@ -26,7 +31,9 @@ class DonorController extends Controller
      */
     public function create()
     {
-        return view('transfusi');
+        return view('donor.create', [
+            "tittle" => "Buat Data"
+        ]);
     }
 
     /**
@@ -37,7 +44,8 @@ class DonorController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        // return $request;
+        $validatedData = $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
             'tlp' => 'required',
@@ -51,31 +59,34 @@ class DonorController extends Controller
             'jam' => 'required'
         ]);
 
-        $input = $request->all();
+        $validatedData['user_id'] =  auth()->user()->id;
 
-        Donor::create($input);
+        Donor::create($validatedData);
 
-        return back()->with('success', ' Post baru berhasil dibuat.');
+        return redirect('/donor')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Donor  $donor
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Donor $donor)
     {
-        //
+        // return $donor;
+        // return view('donor.index', [
+        //     'donor' => $donor
+        // ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Donor  $donor
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Donor $donor)
     {
         //
     }
@@ -84,10 +95,10 @@ class DonorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Donor  $donor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Donor $donor)
     {
         //
     }
@@ -95,10 +106,10 @@ class DonorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Donor  $donor
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Donor $donor)
     {
         //
     }

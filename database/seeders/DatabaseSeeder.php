@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Artikel;
+use App\Models\Donor;
 use App\Models\Stokdarah;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,6 +24,28 @@ class DatabaseSeeder extends Seeder
             'email' => 'kahfi@gmail.com',
             'password' => bcrypt('password')
         ]);
+
+        Stokdarah::create([
+            'a' => '2',
+            'b' => '1',
+            'ab' => '3',
+            'o' => '4'
+        ]);
+
+        // Donor::create([
+        //     'nama' => 'andre',
+        //     'user_id' => '1',
+        //     'alamat' => 'bali',
+        //     'tlp' => '1234312',
+        //     'tempat' => 'singaraja',
+        //     'tgl_lahir' => ' ',
+        //     'jk' => 'laki',
+        //     'donor_terakhir' => '',
+        //     'skrdonor' => '2',
+        //     'lokasi_donor' => 'sd',
+        //     'tgl_donor' => ' ',
+        //     'jam' => ' '
+        // ]);
 
         User::factory(3)->create();
 
