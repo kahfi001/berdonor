@@ -19,6 +19,12 @@
           Stok Darah
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/faq*')?'active':'' }}" href="/dashboard/faq">
+          <span data-feather="help-circle"></span>
+          FAQ
+        </a>
+      </li>
       <hr>
       <li class="nav-item mx-auto">
         <form action="/logout" method="post">

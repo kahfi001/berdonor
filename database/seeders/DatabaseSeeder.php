@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Artikel;
+use App\Models\Faq;
 use App\Models\Donor;
 use App\Models\Stokdarah;
 use Illuminate\Database\Seeder;
@@ -19,9 +20,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Muhammad Kahfi',
-            'username' => 'kahfi',
-            'email' => 'kahfi@gmail.com',
+            'name' => 'admin',
+            'username' => 'admin',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('password')
         ]);
 
@@ -50,6 +51,32 @@ class DatabaseSeeder extends Seeder
         User::factory(3)->create();
 
         Artikel::factory(10)->create();
+
+        Faq::create([
+            'pertanyaan' => 'Apakah Boleh Mendonorkan Darah Apabila Saya Memiliki Riwayat Penyakit? ',
+            'jawaban' => 'Apabila bukan suatu penyakit yang parah dan anda masih dalam
+            kondisi yang cukup stabil dan memenuhi semua persyaratan.'
+        ]);
+        Faq::create([
+            'pertanyaan' => 'Apakah Website Memerlukan KTP Untuk Registration User? ',
+            'jawaban' => 'Tidak, NIK KTP akan dibutuhkan ketika mendaftar untuk berdonor'
+        ]);
+        Faq::create([
+            'pertanyaan' => 'Apakah Saya Perlu Memiliki Akun di Berdonor? ',
+            'jawaban' => 'Jika kebutuhan anda adalah menerima  atau menyumbang, Ya.'
+        ]);
+        Faq::create([
+            'pertanyaan' => 'Bagaimana Cara Membatalkan Formulir Pendaftaran?  ',
+            'jawaban' => 'Silahkan buka halaman pendaftaran. Lalu silahkan pilih riwayat pendaftaran  '
+        ]);
+        Faq::create([
+            'pertanyaan' => 'Apakah Saya Bisa Mengakses Website Berdonor Melalui SmartPhone?',
+            'jawaban' => 'Tentu saja, Website berdonor dapat diakses melalui smartphone anda.'
+        ]);
+        Faq::create([
+            'pertanyaan' => 'Apakah Privasi Data User Aman ? ',
+            'jawaban' => 'Tenang, data privasi anda akan terjamin di tangan kami.'
+        ]);
         // Artikel::create([
         //     'tittle' => 'Judul Pertama',
         //     'slug' => 'judul-pertama',

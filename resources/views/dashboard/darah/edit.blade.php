@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Edit Artikel</h1>
+  <h1 class="h2">Edit Stok Darah</h1>
 </div>
 
 <div class="col-lg-8">
@@ -44,7 +44,7 @@
           </div>  
       @enderror
     </div>  
-    <button type="submit" class="btn btn-primary">Update Artikel</button>
+    <button type="submit" class="btn btn-primary">Update Stok Darah</button>
   </form>
 </div>
   

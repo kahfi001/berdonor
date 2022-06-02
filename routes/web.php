@@ -8,7 +8,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardArtikelController;
 use App\Http\Controllers\DashboardDarahController;
+use App\Http\Controllers\DashboardFaqController;
 use App\Http\Controllers\DonorController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\RegisterController;
@@ -36,12 +38,15 @@ Route::get('/tentangkami', function () {
         "active" => "Tentang kami"
     ]);
 });
+
 Route::get('/faq', function () {
     return view('faq', [
         "tittle" => "FAQ",
         "active" => "FAQ"
     ]);
 });
+
+Route::get('/faq', [FaqController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -71,3 +76,5 @@ Route::resource('donor', DonorController::class)->middleware('auth');
 Route::get('/dashboard/darah', [DashboardDarahController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/darah/edit/{id}', [DashboardDarahController::class, 'edit'])->middleware('auth');
 Route::post('/dashboard/darah/update/{id}', [DashboardDarahController::class, 'update'])->middleware('auth');
+
+Route::resource('/dashboard/faq', DashboardFaqController::class);
