@@ -56,7 +56,7 @@
         <div class="col-md-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-              <h3><a href="/artikel/{{ $artikel[0]->slug }}" class="text-decoration-none ">{{ $artikel[0]->tittle }}</a></h3>
+              <h5><a href="/artikel/{{ $artikel[0]->slug }}" class="text-decoration-none ">{{ $artikel[0]->tittle }}</a></h5>
               <div class="mb-1 text-muted">{{ $artikel[0]->created_at->diffForHumans() }}</div>
               <p class="card-text mb-auto">{{ $artikel[0]->excerpt }}</p>
             </div>        
@@ -74,7 +74,7 @@
         <div class="col-md-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-              <h3><a href="/artikel/{{ $artikel[1]->slug }}" class="text-decoration-none ">{{ $artikel[1]->tittle }}</a></h3>
+              <h5><a href="/artikel/{{ $artikel[1]->slug }}" class="text-decoration-none ">{{ $artikel[1]->tittle }}</a></h5>
               <div class="mb-1 text-muted">{{ $artikel[1]->created_at->diffForHumans() }}</div>
               <p class="card-text mb-auto">{{ $artikel[1]->excerpt }}</p>
             </div>        
@@ -92,10 +92,11 @@
       </div>
     </div>
     {{-- kontak pmi --}}
-    <div class="p-5 mb-4 bg-light rounded-3" class="kontak-pmi">
+    <div class=" mb-4 bg-light rounded-3 kontak-pmi" >
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold"> Kontak kami, jika merasa kesulitan</h1>
-       <a href=""><p class="col-md-8 fs-4"><span data-feather="mail"></span>Berdonor@gmail.com</p></a>           
+        {{-- <img src="/img/faqhome.png" alt="" class="rounded float-end" style="width:20%;">         --}}
+       <a href=""><p class="col-md-8 fs-4"><span data-feather="mail"></span>Berdonor@gmail.com</p></a>   
       </div>
     </div>
   </div>
